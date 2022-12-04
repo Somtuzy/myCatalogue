@@ -14,20 +14,20 @@ const prompt = require("prompt-sync")();
 
 // Greeting the user 
  console.log(`Welcome to Shawarma Hub, Where You Meat Heaven On Earth... Pun intended!
- My name is $omtuzy...`)
+My name is $omtuzy...`)
  userName = prompt(`What do I call you? `)
 
  console.log(`Hey, ${userName}. That's a nice name! 
- Would you like to see some of our best rolls? `)
+Would you like to see some of our best rolls? `)
  choice = prompt(`Reply with 'yes' to see rolls or 'no' to exit `)
 
 
 // Displaying Products
  if (choice === `yes` || choice === `Yes`|| choice === `YES`){
  console.log(`Here's a list of our top products. Please choose a product below:
- - For ${products[0]} reply with "one"
- - For ${products[1]} reply with "two"
- - For ${products[2]} reply with "three"`)
+- For ${products[0]} reply with "one"
+- For ${products[1]} reply with "two"
+- For ${products[2]} reply with "three"`)
 
 // Making your order
  order = prompt(`You must be starving! What would you like to eat? `)
@@ -55,24 +55,24 @@ const prompt = require("prompt-sync")();
 
 // Choosing Sizes
 console.log(`Please choose the size of Shawarma you would like below:
-Type 'min' for the smallest size
-Type 'mid' for the regular size
-Type 'big' for the biggest size
+Reply with 'min' for the smallest size
+Reply with 'mid' for the regular size
+Reply with 'big' for the biggest size
 `)
 size = prompt(`What size of Shawarma would you like? `)
 
 if (size === 'min'|| size === 'Min' || size === 'MIN'){
     bill = (price * min) + vat
     console.log(`Your order currently costs ${bill}. Would you like to proceed?
-    Type 'yes' to checkout
-    Type 'no' to cancel?`)
+Reply with 'yes' to checkout
+Reply with 'no' to cancel?`)
     pcs = `mini sized`
 
 } else if (size === 'mid' || size === 'Mid' || size === 'MID'){
   bill = (price * mid) + vat
   console.log(`Your order currently costs ${bill}. Would you like to proceed?
-  Type 'yes' to checkout
-  Type 'no' to cancel?`)
+Reply with 'yes' to checkout
+Reply with 'no' to cancel?`)
   pcs = `medium sized`
 
 } else if (size === 'big' || size === 'Big' || size === 'BIG'){
