@@ -59,7 +59,7 @@ Type 'min' for the smallest size
 Type 'mid' for the regular size
 Type 'big' for the biggest size
 `)
-size = prompt(`What size of Shawarma would you like?`)
+size = prompt(`What size of Shawarma would you like? `)
 
 if (size === 'min'|| size === 'Min' || size === 'MIN'){
     bill = (price * min) + vat
@@ -94,7 +94,8 @@ if (size === 'min'|| size === 'Min' || size === 'MIN'){
  bill = bill + deliveryFee;
  console.log(`
 Your order has been processed & will be dispatched within 15 minutes to ${address}.
-You will be charged a delivery fee of ₦${deliveryFee}
+You will be charged a delivery fee of ₦${deliveryFee} which is included in your total bill below.
+
 Your order details are:
 
 - Name: ${userName}
