@@ -1,159 +1,112 @@
-// Week Three Task
-// This is a simple e-commerce console application for ordering Shawarma.. Who's hungry? LoL
-
-// Command for Vs terminal's Prompt Sync - Optional, Use for Vs Code Only
-"use strict";
-
 const prompt = require("prompt-sync")();
 
 
-// Declaring Variables For Products & Prices
-let products, mini, reg, big;
-
-products = ['Chicken Shawarma', 'Beef Shawarma', 'Mixed'];
-mini = [1200, 1100, 1000];
-reg = [1400, 1300, 1200];
-big = [2000, 1900, 1800];
-
-// Getting Customer's Name 
-let customer = prompt(`Welcome to Shawarma Hub - Your Shawarma Heaven On EArth.. What do we call you? `);
-console.log(`Hello, ${customer}. You must be hungry! Let us take your order right away!
-  - Enter "Chicken" for Chicken Shawarma
-  - Enter "Beef" for Beef Shawarma
-  - Enter "Mixed" for Chicken & Beef`);
+// Declaring Variables, Products, Variants & Prices
+ let products, price, userName, choice, order, bill;
+ let quantity, min, mid, big, vat, size, pcs, details;
+ products = ['Chicken Shawarma', 'Beef Shawarma', 'Chicken & Beef']
+ base = [1300, 1200, 1100]
+ min = 0.75
+ mid = 1 
+ big = 1.25
+ vat = 25
 
 
-// Taking And Calculating Customer's Order
-let order = prompt(`What would you like to eat? `);
+// Greeting the user 
+ console.log(`Welcome to Shawarma Hub, Where You Meat Heaven On Earth... Pun intended!
+ My name is $omtuzy...`)
+ userName = prompt(`What do I call you? `)
 
-// Chicken Shawarma
-if(order === "Chicken" || order === 'chicken' || order === 'CHICKEN'){
-  console.log(`Please specify the size you want below: 
-  - Enter "mini" for our smallest roll @ ₦1000 - ₦1200
-  - Enter "reg" for our regular roll @ ₦1200 - ₦1400
-  - Enter "big" for our biggie roll @ ₦1800 - ₦2000
-`);
+ console.log(`Hey, ${userName}. That's a nice name! 
+ Would you like to see some of our best rolls? `)
+ choice = prompt(`Reply with 'yes' to see rolls or 'no' to exit `)
 
-// Choosing size & quantity & getting exact price(s) for your order
-  let size = prompt(`What size are you here for, my friend? `);
 
-if(size === "mini" || size === 'Mini' || size === 'MINI'){
-    console.log(`Please specify how many rolls you want in figures: `);
-    let qty = prompt(`How many of those do you need? `);
-    let bill = qty * mini[0];
-    console.log(`Your order costs ₦${bill}..
-Would you like to proceed to checkout? 
-  - Enter Yes to checkout
-  - Enter No to cancel your order.. `);
+// Displaying Products
+ if (choice === `yes` || choice === `Yes`|| choice === `YES`){
+ console.log(`Here's a list of our top products. Please choose a product below:
+ - For ${products[0]} reply with "one"
+ - For ${products[1]} reply with "two"
+ - For ${products[2]} reply with "three"`)
 
-} else if (size === "reg" || size === 'Reg' || size === 'REG'){
-    console.log(`Please specify how many rolls you want in figures `);
-    let qty = prompt(`How many of those do you need? `);
-    let bill = qty * reg[0];
-    console.log(`Your order costs ₦${bill}..
-Would you like to proceed to checkout? Type Yes to checkout or type No to cancel your order.. `);
+// Making your order
+ order = prompt(`You must be starving! What would you like to eat? `)
 
-} else if (size === "big" || size === 'Big' || size === 'BIG'){
-    console.log(`Please specify how many rolls you want in figures `);
-    let qty = prompt(`How many of those do you need? `);
-    let bill = qty * big[0];
-    console.log(`Your order costs ₦${bill}..
-Would you like to proceed to checkout? Type Yes to checkout or type No to cancel your order.. `);
-    
+  if (order === 'One' || order === 'one' || order === 'ONE'){
+            quantity = prompt(`How many rolls? `)
+            price = quantity * base[0]
+            details = `Chicken Shawarma`
+   
+            
+
+ } else if (order === 'two' || order === 'Two' || order === 'TWO'){
+            quantity = prompt(`How many rolls? `)
+            price = quantity * base[1]
+            details = `Beef Shawarma`
+            
+
+
+ } else if (order === 'three' || order === 'three' || order === 'three'){
+            quantity = prompt(`How many rolls? `)
+            price = quantity * base[2]
+            details = `Chicken & Beef Shawarma`
+ }
+
+
+// Choosing Sizes
+console.log(`Please choose the size of Shawarma you would like below:
+Type 'min' for the smallest size
+Type 'mid' for the regular size
+Type 'big' for the biggest size
+`)
+size = prompt(`What size of Shawarma would you like?`)
+
+if (size === 'min'|| size === 'Min' || size === 'MIN'){
+    bill = (price * min) + vat
+    console.log(`Your order currently costs ${bill}. Would you like to proceed?
+    Type 'yes' to checkout
+    Type 'no' to cancel?`)
+    pcs = `mini sized`
+
+} else if (size === 'mid' || size === 'Mid' || size === 'MID'){
+  bill = (price * mid) + vat
+  console.log(`Your order currently costs ${bill}. Would you like to proceed?
+  Type 'yes' to checkout
+  Type 'no' to cancel?`)
+  pcs = `medium sized`
+
+} else if (size === 'big' || size === 'Big' || size === 'BIG'){
+  bill = (price * big) + vat
+  console.log(`Your order currently costs ₦${bill}. Would you like to proceed?
+  Type 'yes' to checkout
+  Type 'no' to cancel?`)
+  pcs = `big sized`
+
 }
 
-// Beef Shawarma
-} else if(order === "Beef" || order === 'beef' || order === 'BEEF'){
-  console.log(`Please specify the size you want below: 
-  - Type "mini" for our smallest roll @ ₦1000 - ₦1200
-  - Type "reg" for our regular roll @ ₦1200 - ₦1400
-  - Type "big" for our biggie roll @ ₦1800 - ₦2000
-`);
 
-// Choosing size & quantity & getting exact price(s) for your order
-  let size = prompt(`What size are you here for, my friend? `);
+//  Billing, Order Details & Checkout
+ let dispatch, phoneNumber, address, deliveryFee;
+ deliveryFee = 500
+ dispatch = prompt(`Proceed to checkout `);
+ phoneNumber = prompt(`Can we have your phone number? `);
+ address = prompt(`What address do we send your order to? `);
+ bill = bill + deliveryFee;
+ console.log(`
+Your order has been processed & will be dispatched within 15 minutes to ${address}.
+You will be charged a delivery fee of ₦${deliveryFee}
+Your order details are:
 
-if(size === "mini" || size === 'Mini' || size === 'MINI'){
-    console.log(`Please specify how many rolls you want in figures: `);
-    let qty = prompt(`How many of those do you need? `);
-    let bill = qty * mini[1];
-    console.log(`Your order costs ₦${bill}..
-Would you like to proceed to checkout? Type Yes to checkout or type No to cancel your order.. `);
+- Name: ${userName}
+- Order: ${quantity} ${pcs} ${details}
+- Phone number: ${phoneNumber}
+- Order address: ${address}
+- Order total (Vat Inclusive): ₦${bill}
 
-} else if (size === "reg" || size === 'Reg' || size === 'REG'){
-    console.log(`Please specify how many rolls you want in figures `);
-    let qty = prompt(`How many of those do you need? `);
-    let bill = qty * reg[1];
-    console.log(`Your order costs ₦${bill}..
-Would you like to proceed to checkout? Type Yes to checkout or type No to cancel your order.. `);
+Our dispatch rider will call you in 15 minutes. Thanks for your patronage!`)
 
-} else if (size === "big" || size === 'Big' || size === 'BIG'){
-    console.log(`Please specify how many rolls you want in figures `);
-    let qty = prompt(`How many of those do you need? `);
-    let bill = qty * big[1];
-    console.log(`Your order costs ₦${bill}..
-Would you like to proceed to checkout? Type Yes to checkout or type No to cancel your order.. `);
-    
+} else if (choice === `no` || choice === `NO` || choice === `NO`) {
+  console.log(`Hey, ${userName}. We're sad that we couldn't take your order.
+We hope to serve you better next time!`)
 }
 
-// Chicken & Beef
-} else if(order === "Mixed" || order === 'mixed' || order === 'MIXED'){
-  console.log(`Please specify the size you want below: 
-  - Type "mini" for our smallest roll @ ₦1000 - ₦1200
-  - Type "reg" for our regular roll @ ₦1200 - ₦1400
-  - Type "big" for our biggie roll @ ₦1800 - ₦2000
-`);
-
-// Choosing size & quantity & getting exact price(s) for your order
-  let size = prompt(`What size are you here for, my friend? `);
-
-if(size === "mini" || size === 'Mini' || size === 'MINI'){
-    console.log(`Please specify how many rolls you want in figures: `);
-    let qty = prompt(`How many of those do you need? `);
-    let bill = qty * mini[2];
-    console.log(`Your order costs ₦${bill}..
-    Would you like to proceed to checkout? Type Yes to checkout or type No to cancel your order.. `);
-
-} else if (size === "reg" || size === 'Reg' || size === 'REG'){
-    console.log(`Please specify how many rolls you want in figures `)
-    let qty = prompt(`How many of those do you need? `);
-    let bill = qty * reg[2];
-    console.log(`Your order costs ₦${bill}..
-Would you like to proceed to checkout? Type Yes to checkout or type No to cancel your order.. `);
-
-} else if (size === "big" || size === 'Big' || size === 'BIG'){
-    console.log(`Please specify how many rolls you want in figures `)
-    let qty = prompt(`How many of those do you need? `);
-    let bill = qty * big[2];
-    console.log(`Your order costs ₦${bill}..
-Would you like to proceed to checkout? Type Yes to checkout or type No to cancel your order.. `);
-    
-}
-
-// No order
-} else {
-  console.log(`Thank you for visiting Shawarma Hub, ${customer}. We hope to serve you better next time!
-Please exit by typing no on the checkout option below:`)
-}
-
-// Checkout
-
-let checkout = prompt(`Proceed to checkout? `);
-if (checkout ==='yes' || checkout ==='Yes' || checkout ==='YES'){
-let phoneNumber, address;
-phoneNumber = prompt(`Please give us your phone number to dispatch your order.. `);
-address = prompt(`What address would you like for us to send your order to? `);
-
-if (phoneNumber !== null && address !== null){
-    console.log(`Your order is being processed. We will ship your order to ${address} in 15-20 minutes. 
-    Our dispatch rider will call you on ${phoneNumber} within the hour once your order is on its way. 
-Thanks for your patronage!`);
-
-} else {
-    phoneNumber;
-    address;
-}
-
-} else if (checkout === 'no'){
-    console.log(`Thank you for visiting Shawarma Hub, ${customer}. We hope to serve you better next time!`)
-}
