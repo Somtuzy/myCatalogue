@@ -1,23 +1,33 @@
-The goal is to create a telephone package using some basic knowledge of Object Oriented Programming and implement some design patters. 
+The goal is to create a telephone package using some basic knowledge of Object Oriented Programming and Design patterns. 
 
-Here is a step by step breakdown of my code below:
+Here is a step by step breakdown below:
 1. A Telephone class was created with two properties and three methods were exposed:
+
 => Property one: dialer - For adding numbers to the dialer.
+
 => Property two: observers - For adding observers to the dialer.
+
 => Method one: AddPhoneNumber - For adding a new phone number
+
 => Method two: RemovePhoneNumber - For removing a phone number
+
 => Method three: DialPhoneNumber - For dialling a phone number (only phone numbers that have been added can be dialled). This method notifies our observers whenever a phone number is dialled.
 
 2. The telephone class was updated so it uses the observer pattern (have methods to add, remove and notify observers) by creating three extra methods: 
+
 => Method four: addObserver - For adding a new Observer
+
 => Method five: removeObserver - For removing an Observer
+
 => Method six: notifyObserver - For notifying an Observer
 
 3. A second class was created for the observer, with an observer property and a method that can be called by the telephone class to notify it.
+
 => Property one: observer - For creating a new observer and taking their details 
+
 => Method one: update - To be called by the Telephone class to notify the observers.
 
-4. The Telephone class was instantiated once and we used a Singleton pattern to prevent it from having more than one instance.
+4. The Telephone class was instantiated once and with a Singleton pattern was prevented from having more than one instance.
 
 5. Two new observers were created by making two instances of the observer class.
 

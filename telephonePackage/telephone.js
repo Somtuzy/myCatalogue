@@ -1,6 +1,7 @@
 // Creates a telephone class for a telephone package
 class Telephone{
     constructor(){
+        // This makes sure at least one instance is created
        if(!Telephone.instance){
         this.dialer = new Set()
         this.observers = new Set()
@@ -8,6 +9,7 @@ class Telephone{
         }
         return Telephone.instance
     }
+
     // For adding a phone number
     addPhoneNumber(phoneNumber){
         this.dialer.add(phoneNumber)
@@ -18,11 +20,8 @@ class Telephone{
     }
     // For dialing a phone number in the dialer
     dialPhoneNumber(number){
-        if(this.dialer.has(number)){
-            this.notifyObserver(`Now Dialing +${number}`)
-        } else {
-            this.notifyObserver('This number was not found in the dialer.')
-        }
+        if(this.dialer.has(number)) this.notifyObserver(`Now Dialing +${number}`);
+        else this.notifyObserver('This number was not found in the dialer.');
     }
     // For adding an observer
     addObserver(observer){
@@ -32,7 +31,7 @@ class Telephone{
     removeObserver(observer){
         this.observers.delete(observer)
     }
-    // For notifying observers
+    // For notifying each observer
     notifyObserver(message){
        for(const observer of this.observers){
         observer.update(message)
@@ -45,7 +44,8 @@ class Observer {
     constructor(observer){
         this.observer = observer
     }
-    // For updating all observers
+    
+    // For accessing & notifying all observers when there's an update
     update(message){
         console.log(`New notification for ${this.observer.name}: ${message}`);
     }
