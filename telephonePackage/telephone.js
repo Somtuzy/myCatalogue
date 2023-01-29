@@ -47,7 +47,7 @@ class Observer {
     
     // For accessing & notifying all observers when there's an update
     update(message){
-        console.log(`New notification for ${this.observer.name}: ${message}`);
+        console.log(`New notification for ${this.observer.name}{${this.observer.gender}, ${this.observer.age}}(${this.observer.status}): ${message}`);
     }
 }
 
@@ -59,7 +59,7 @@ Object.freeze(dialer)
 
 // Creates two observers with their personal details
 const somto = new Observer({name: 'Somto', age: 22, gender: 'male', status: 'online'})
-const onyeka = new Observer({name: 'Onyeka', age: 24, gender: 'male', status: 'online'})
+const onyeka = new Observer({name: 'Onyeka', age: 24, gender: 'female', status: 'online'})
 
 // Adds the two observers created
 dialer.addObserver(somto)
