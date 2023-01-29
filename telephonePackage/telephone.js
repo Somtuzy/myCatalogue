@@ -1,3 +1,4 @@
+"use strict"
 // Creates a telephone class for a telephone package
 class Telephone{
     constructor(){
