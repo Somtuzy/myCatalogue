@@ -14,28 +14,31 @@ class Telephone{
     addPhoneNumber(phoneNumber){
         this.dialer.add(phoneNumber)
     }
+    
     // For removing a phone number
     removePhoneNumber(number){
         this.dialer.delete(number)
     }
+
     // For dialing a phone number in the dialer
     dialPhoneNumber(number){
         if(this.dialer.has(number)) this.notifyObserver(`Now Dialing +${number}`);
         else this.notifyObserver('This number was not found in the dialer.');
     }
+
     // For adding an observer
     addObserver(observer){
         this.observers.add(observer)
     }
+
     // For removing an observer
     removeObserver(observer){
         this.observers.delete(observer)
     }
+
     // For notifying each observer
     notifyObserver(message){
-       for(const observer of this.observers){
-        observer.update(message)
-        }
+       for(const observer of this.observers) observer.update(message);
     }
 }
 
