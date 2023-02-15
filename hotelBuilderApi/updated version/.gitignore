@@ -1,0 +1,7 @@
+# files
+package.json
+package-lock.json
+src/db/.env
+
+# directories
+src/node_modules
