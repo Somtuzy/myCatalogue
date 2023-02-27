@@ -17,7 +17,7 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
 
         // Checks if a token exists and returns a message if none was found
         if (!token) return res.status(400).send({
-            message: 'We no see token for your local storage oh'
+            message: 'You must be signed in to view content'
         })
 
         // Decode the user token referenced in the request header?cookie to verify its authenticity by checking the token against the secret key. If the token is valid, we should get the user credentials associated with that token.
@@ -25,7 +25,7 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
 
         // If secret key doesn't recognise the token, the user isn't authenticated and asked to try signing in again to get a new token
         if (!decodedReqToken) {
-            return res.status(400).send({
+            return res.status(403).send({
                 message: 'User authentication failed, please try signing in again',
                 status: 'failed'
             })
@@ -49,8 +49,8 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
         (req as AuthRequest).user = validUser;
         next();
     } catch (err) {
-        return res.status(403).send({
-            message: 'You must be signed in to view content',
+        return res.status(400).send({
+            message: err,
             status: 'failed'
         })
     }

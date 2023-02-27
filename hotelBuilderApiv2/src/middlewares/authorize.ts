@@ -8,14 +8,14 @@ const authorize = async (req: Request, res: Response, next: NextFunction) => {
         const user = (req as AuthRequest).user;
         const authUser = await userService.getOne({ _id: (user as iUser).id })
 
-        if (!user) {
+        if (!authUser) {
             return res.status(403).send({
                 message: 'You must be signed in to view this page',
                 status: 'failed'
             })
         } else {
-            if (user.role === 'admin') {
-                console.log('Admin access granted to:', user);
+            if (authUser.role === 'admin') {
+                console.log('Admin access granted to:', authUser);
 
                 next()
             } else {
@@ -26,7 +26,7 @@ const authorize = async (req: Request, res: Response, next: NextFunction) => {
             }
         }
     } catch (err) {
-        return res.status(404).send({
+        return res.status(400).send({
             message: err,
             status: 'failed'
         })

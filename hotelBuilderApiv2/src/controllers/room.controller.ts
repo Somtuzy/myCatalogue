@@ -144,7 +144,7 @@ class RoomController {
         }
     }
 
-    // Get a single room by its
+    // Get a single room by its id
     async getRoom(req: Request, res: Response) {
         try {
             const roomId = req.params.id

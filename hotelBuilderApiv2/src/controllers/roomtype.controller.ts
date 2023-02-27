@@ -63,7 +63,7 @@ class RoomTypeController {
             // Sends a success message and displays the updated roomtype
             return res.status(200).send({
                 success: true,
-                message: 'Roomtypes updated successfully!',
+                message: 'Roomtype updated successfully!',
                 data: updatedRoomType
             })
         } catch (err: any) {

@@ -37,7 +37,7 @@ const userSchema = new Schema({
         required: true,
         min: 18
     }
-})
+}, {timestamps: true})
 
 const userModel = model("user", userSchema)
 export default userModel;
