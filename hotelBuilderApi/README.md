@@ -1,4 +1,4 @@
-# hotelBuilderApiv2
+# hotelBuilderApi
 This is a simple RESTful API for managing hotel rooms, creating users (guests and admins) and roomtypes. A user must be signed in either as an admin or as a guest to carry out the basic CRUD operations.
 
 # Functionalities
